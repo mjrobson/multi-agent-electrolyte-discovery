@@ -32,19 +32,14 @@ cd multi-agent-electrolyte-discovery
 ### 2. Create and Activate the Environment
 
 ```bash
-conda create -n electrolyte-discovery python=3.10
+conda create -n electrolyte-discovery python=3.9
 conda activate electrolyte-discovery
 ```
 
 ### 3. Install Required Dependencies
 
-Using `conda`:
 
-```bash
-conda env update --file conda_environment.yml
-```
-
-Or using `pip`:
+Using `pip`:
 
 ```bash
 pip install -r pip_environment.txt
