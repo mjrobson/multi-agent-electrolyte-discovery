@@ -1,52 +1,107 @@
-# Multi-agent electrolyte discovery
-Supporting code for: "Multi-agent-network-based idea generator for zinc-ion battery electrolyte discovery: A case study on zinc tetrafluoroborate hydrate-based deep eutectic electrolytes"
+# Multi-Agent Electrolyte Discovery
 
-This repository contains an LLM-driven multi-agent framework for collaborative discovery of advanced electrolytes. The system combines:
+**Supporting code for:**  
+**_Multi-agent-network-based idea generator for zinc-ion battery electrolyte discovery: A case study on zinc tetrafluoroborate hydrate-based deep eutectic electrolytes_**
 
-- Autonomous literature analysis
-- Multi-agent decision workflows
+This repository contains an LLM-driven, multi-agent framework for electrolyte composition discovery, focused on deep eutectic electrolytes (DEEs) for zinc-ion batteries. The system combines:
 
-Though initially demonstrated for zinc-ion battery electrolytes in our paper, the modular architecture can be adapted to other materials discovery domains through configuration of prompts, agent messages, and input literature.
+- Autonomous literature analysis  
+- Multi-agent reasoning and tool use  
+- Retrieval-augmented generation (RAG) pipelines
 
-For specific details about our zinc-based DEE case study and experimental validation, see the published paper.
+While this implementation targets DEEs based on zinc tetrafluoroborate hydrate, the architecture is fully modular and adaptable to other materials discovery problems with modification to prompts, agent messages, and input data.
 
-# User Guide
+---
 
-## Installation Instructions
-1) Install relevant packages
+## 🛠 Installation Instructions
 
-## Installation
+> ⚠️ **Important:** This project relies on specific versions of `langchain`, `langgraph`, and related packages. These ecosystems have evolved rapidly since the original study, and **newer versions are likely to break functionality or alter model behavior**.
+
+To ensure reproducibility with the published results:
+
+- Start from a **clean Conda environment**.
+- Install dependencies using the exact versions provided.
+
+### 1. Clone the Repository
 
 ```bash
 git clone https://github.com/yourusername/multi-agent-electrolyte-discovery
 cd multi-agent-electrolyte-discovery
-conda env create -f environment.yml
-conda activate multi-agent-electrolyte-discovery
 ```
-3) 
 
-## Preparing the Vector Databases
+### 2. Create and Activate the Environment
 
-### 1. Extract Papers
-    Gather Research Papers
+```bash
+conda create -n electrolyte-discovery python=3.10
+conda activate electrolyte-discovery
+```
 
-        Collect all relevant publications in PDF format
+### 3. Install Required Dependencies
 
-        Store them in a dedicated papers/ directory
+Using `conda`:
 
-    Run Extraction Workflow
+```bash
+conda env update --file conda_environment.yml
+```
 
-        Execute the extract_papers.ipynb Jupyter notebook
+Or using `pip`:
 
-        Follow the step-by-step instructions contained in the notebook to process documents
+```bash
+pip install -r pip_environment.txt
+```
+
+---
+
+## 📚 Preparing the Vector Databases
+
+### 1. Gather Research Papers
+
+- Collect all relevant publications in **PDF** format.
+- Place them in the `input/papers_pdf/` directory.
+
+### 2. Perform One-Time Setup
+
+Launch and follow the instructions in the `one-time-setup.ipynb` Jupyter notebook.  
+This will guide you through:
+
+- Extracting text from the PDFs  
+- Cleaning and normalizing the output `.txt` files  
+- Automatically summarizing the papers using GPT-4  
+- Building Chroma vector databases for papers and summaries
+
+---
+
+## 🚀 Running the Model
+
+Once setup is complete, open and run the `run_model.ipynb` notebook.  
+This notebook will:
+
+- Load the vector databases for RAG
+- Set up retriever tools and agent system prompts
+- Define a two-agent decision graph (Scientist + Principal Investigator)
+- Execute the workflow and stream results to the console and to the `results/` folder
+
+You can re-run the model as many times as you'd like to generate additional electrolyte compositions.
+
+---
+
+## 🔁 Reproducibility
+
+The code in this repository is functionally identical to the version used in the original study, aside from minor formatting and documentation updates.  
+
+While the project *can* be made to run using newer versions of the dependencies (with appropriate syntax adjustments), output behavior may differ.
 
 
-## Running the Model
+---
 
-# Disclaimer
+## ⚠️ Disclaimer
 
-This software is provided "as is", without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose, and noninfringement. In no event shall the authors or copyright holders be liable for any claim, damages, or other liability, whether in an action of contract, tort, or otherwise, arising from, out of, or in connection with the software or the use or other dealings in the software.
+This software is provided *"as is"*, without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose, and noninfringement.
 
-This repository is maintained in a static state to closely match the code used in the original publication. No updates or bug fixes are planned. Users should be aware that future updates to underlying dependencies (including but not limited to langchain, langgraph, chroma, or other packages) may break functionality.
+In no event shall the authors or copyright holders be liable for any claim, damages, or other liability arising from use of the software.
 
-Use of this software is entirely at your own risk.
+This repository is maintained in a **static state** to match the published study.  **No future updates or support are planned.**
+
+> Use this software entirely at your own risk. Updates to dependencies such as `langchain`, `langgraph`, or `chroma` may break functionality.
+
+
