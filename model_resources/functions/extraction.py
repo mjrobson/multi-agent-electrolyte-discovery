@@ -73,3 +73,4 @@ def process_pdf_batch(pdf_dir: str, output_dir: str) -> None:
         clean_line_breaks(os.path.join(output_dir, txt_file))
 
     print(f"✅ Processing complete! Results saved to: {output_dir}")
+

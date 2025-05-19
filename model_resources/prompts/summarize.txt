@@ -14,4 +14,3 @@ In particular, please identify the following information from the paper:
 
                 ```
                 {paper}
-                ```
