@@ -54,6 +54,8 @@ pip install -r pip_environment.txt
 - Collect all relevant publications in **PDF** format.
 - Place them in the `input/papers_pdf/` directory.
 
+> ℹ️ **Note:** This folder — along with other intentionally empty directories in the repository — contains a `.gitkeep` file to ensure it is tracked by GitHub. You can safely leave it in place or delete it after adding your own files.
+
 ### 2. Perform One-Time Setup
 
 Launch and follow the instructions in the `one-time-setup.ipynb` Jupyter notebook.  
