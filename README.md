@@ -32,7 +32,7 @@ cd multi-agent-electrolyte-discovery
 ### 2. Create and Activate the Environment
 
 ```bash
-conda create -n electrolyte-discovery python=3.9
+conda create -n electrolyte-discovery python=3.11
 conda activate electrolyte-discovery
 ```
 
